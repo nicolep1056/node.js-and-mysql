@@ -1,5 +1,6 @@
 var mysql = require("mysql");
 var inquirer = require("inquirer");
+require("console.table");
 
 var connection = mysql.createConnection({
     host: "localhost",
@@ -13,19 +14,20 @@ connection.connect(function (err) {
     if(err) throw err;
     console.log("Welcome to Bamazon! Connected as id " + connection.threadId);
 /*     connection.end(); */
-    bTable();
+/*     bTable(); */
 
-    function bTable() {
-        var products = new Table({
+/*     function bTable() { */
+/*         var products = new Table({
             head: ["Item ID", "Product Name", "Price"],
             colWidths: [10, 60, 10]
-        });
+        }); */
         
 
         connection.query("select * from products", function(err, res) {
             if (err) throw err;
             console.log("AVAILABLE PRODUCTS");
-            for (var i = 0; i < res.lenth; i++) {
+            console.table(res);
+       /*      for (var i = 0; i < res.lenth; i++) {
                 var itemId = res[i].item_id;
                 var pName = res[i].product_name;
                 var price = res[i].price;
@@ -35,10 +37,10 @@ connection.connect(function (err) {
             }
 
             console.log(bTable.toString());
-
+ */
             purchaseItem();
         });
-    }
+/*     } */
 
 
     function purchaseItem() {
@@ -74,7 +76,7 @@ connection.connect(function (err) {
             if (err) throw err;
 
             console.log("/nCongrats! You've purchased " + answers.quantity + " " + selectedItem + ". Your total cost is $" + total + "./n");
-            bTable();
+/*             bTable(); */
         });
     }
 });
