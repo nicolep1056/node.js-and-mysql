@@ -79,7 +79,8 @@ connection.connect(function (err) {
                         }], function (err, res) {
                             if (err) throw err;
         
-                            console.log("/nCongrats! You've purchased " + answers.quantity + " " + selectedItem + ". Your total cost is $" + total + "./n");
+                            console.log("Congrats! You've purchased " + answers.quantity + " " + selectedItem + ". Your total cost is $" + total + ".");
+                            purchaseItem();
                             /*             bTable(); */
                         });
                     })
