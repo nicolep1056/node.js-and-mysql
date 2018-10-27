@@ -13,6 +13,8 @@ This is an Amazon-like storefront app which uses node.js and mysql to take in or
 
 ## Screen Shots
 
+![](images/image1.png)
+
 ## Technologies Utilized
     mySQL
     NodeJS
