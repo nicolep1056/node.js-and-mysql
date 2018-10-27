@@ -65,7 +65,7 @@ connection.connect(function (err) {
                     purchaseItem();
                 } else {
                     newQty = res[0].stock_quantity - answers.quantity;
-                    connection.query("select * from products where item_id = ?"), [answers.item_id], function (err, res) {
+                    connection.query("select * from products where item_id = " + answers.item_id, function (err, res) {
                         selectedItem = res[0].product_name;
                         var price = res[0].price;
                         var department = res[0].department_name;
@@ -82,7 +82,7 @@ connection.connect(function (err) {
                             console.log("/nCongrats! You've purchased " + answers.quantity + " " + selectedItem + ". Your total cost is $" + total + "./n");
                             /*             bTable(); */
                         });
-                    }
+                    })
                 }
 
 
